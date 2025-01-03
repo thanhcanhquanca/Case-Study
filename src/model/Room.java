@@ -10,6 +10,15 @@ public class Room implements Serializable {
     private double pricePerDay;
     private boolean isStatus;
 
+    private static Room instance;
+
+    public static Room getInstance(String roomId, String type, int capacity, double pricePerDay, boolean isStatus) {
+        if (instance == null) {
+            instance = new Room(roomId, type, capacity, pricePerDay, isStatus);
+        }
+        return instance;
+    }
+
     public Room() {
     }
 

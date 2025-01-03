@@ -13,6 +13,7 @@ public class Booking implements Serializable {
 
     public Booking() {
     }
+    private static Booking instance;
 
     public Booking(String bookingID, String customerID, String roomId, LocalDate checkInDate, LocalDate checkOutDate, double totalPrice) {
         this.bookingID = bookingID;
@@ -21,6 +22,13 @@ public class Booking implements Serializable {
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.totalPrice = totalPrice;
+    }
+
+    public static Booking getInstance(String bookingID, String customerID, String roomId, LocalDate checkInDate, LocalDate checkOutDate, double totalPrice) {
+        if (instance == null){
+            instance = new Booking(bookingID, customerID, roomId, checkInDate, checkOutDate, totalPrice);
+        }
+        return instance;
     }
 
     public String getBookingID() {

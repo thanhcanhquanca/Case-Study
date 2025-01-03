@@ -9,6 +9,14 @@ public class Invoice implements Serializable {
     private LocalDate issueDate;
     private double totalPrice;
 
+    private static Invoice instance;
+    public static Invoice getInstance(String invoiceID, int bookingId, LocalDate issueDate, double totalPrice) {
+        if (instance == null) {
+            instance = new Invoice(invoiceID, bookingId, issueDate, totalPrice);
+        }
+        return instance;
+    }
+
     public Invoice() {
     }
 

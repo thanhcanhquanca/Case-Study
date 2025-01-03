@@ -6,20 +6,30 @@ public class Customer implements Serializable {
     private String name;
     private String id;
     private int age;
-    private int PhoneNumber;
+    private int phoneNumber;
     private String email;
     private String address;
+
+    public Customer() {
+    }
+
+    private static Customer instance;
+
+    public static Customer getInstance(String name,String id, int age, int phoneNumber, String email, String address) {
+        if (instance == null) {
+            instance = new Customer(name,id,age,phoneNumber,email,address);
+        }
+        return instance;
+    }
+
 
     public Customer(String name, String id, int age, int phoneNumber, String email, String address) {
         this.name = name;
         this.id = id;
         this.age = age;
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
-    }
-
-    public Customer() {
     }
 
     public String getName() {
@@ -47,11 +57,11 @@ public class Customer implements Serializable {
     }
 
     public int getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(int phoneNumber) {
-        PhoneNumber = phoneNumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
