@@ -3,20 +3,16 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Booking implements Serializable {
-    private String bookingID;
+public class Booking extends Hotel implements Serializable {
+    private String bookingDate;
     private String customerID;
     private String roomId;
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
     private double totalPrice;
 
-    public Booking() {
-    }
-    private static Booking instance;
-
-    public Booking(String bookingID, String customerID, String roomId, LocalDate checkInDate, LocalDate checkOutDate, double totalPrice) {
-        this.bookingID = bookingID;
+    public Booking(String bookingDate, String customerID, String roomId, LocalDate checkInDate, LocalDate checkOutDate, double totalPrice) {
+        this.bookingDate = bookingDate;
         this.customerID = customerID;
         this.roomId = roomId;
         this.checkInDate = checkInDate;
@@ -24,19 +20,34 @@ public class Booking implements Serializable {
         this.totalPrice = totalPrice;
     }
 
-    public static Booking getInstance(String bookingID, String customerID, String roomId, LocalDate checkInDate, LocalDate checkOutDate, double totalPrice) {
-        if (instance == null){
-            instance = new Booking(bookingID, customerID, roomId, checkInDate, checkOutDate, totalPrice);
-        }
-        return instance;
+    public Booking(String description, String color, String bookingDate, String customerID, String roomId, LocalDate checkInDate, LocalDate checkOutDate, double totalPrice) {
+        super(description, color);
+        this.bookingDate = bookingDate;
+        this.customerID = customerID;
+        this.roomId = roomId;
+        this.checkInDate = checkInDate;
+        this.checkOutDate = checkOutDate;
+        this.totalPrice = totalPrice;
     }
 
-    public String getBookingID() {
-        return bookingID;
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingDate='" + bookingDate + '\'' +
+                ", customerID='" + customerID + '\'' +
+                ", roomId='" + roomId + '\'' +
+                ", checkInDate=" + checkInDate +
+                ", checkOutDate=" + checkOutDate +
+                ", totalPrice=" + totalPrice +
+                '}';
     }
 
-    public void setBookingID(String bookingID) {
-        this.bookingID = bookingID;
+    public String getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(String bookingDate) {
+        this.bookingDate = bookingDate;
     }
 
     public String getCustomerID() {

@@ -3,28 +3,35 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Invoice implements Serializable {
+public class Invoice extends Hotel implements Serializable {
     private String invoiceID;
-    private int bookingId;
+    private int bookingID;
     private LocalDate issueDate;
-    private double totalPrice;
+    private double totalAmount;
 
-    private static Invoice instance;
-    public static Invoice getInstance(String invoiceID, int bookingId, LocalDate issueDate, double totalPrice) {
-        if (instance == null) {
-            instance = new Invoice(invoiceID, bookingId, issueDate, totalPrice);
-        }
-        return instance;
-    }
-
-    public Invoice() {
-    }
-
-    public Invoice(String invoiceID, int bookingId, LocalDate issueDate, double totalPrice) {
+    public Invoice(String invoiceID, int bookingID, LocalDate issueDate, double totalAmount) {
         this.invoiceID = invoiceID;
-        this.bookingId = bookingId;
+        this.bookingID = bookingID;
         this.issueDate = issueDate;
-        this.totalPrice = totalPrice;
+        this.totalAmount = totalAmount;
+    }
+
+    public Invoice(String description, String color, String invoiceID, int bookingID, LocalDate issueDate, double totalAmount) {
+        super(description, color);
+        this.invoiceID = invoiceID;
+        this.bookingID = bookingID;
+        this.issueDate = issueDate;
+        this.totalAmount = totalAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "invoiceID='" + invoiceID + '\'' +
+                ", bookingID=" + bookingID +
+                ", issueDate=" + issueDate +
+                ", totalAmount=" + totalAmount +
+                '}';
     }
 
     public String getInvoiceID() {
@@ -35,12 +42,12 @@ public class Invoice implements Serializable {
         this.invoiceID = invoiceID;
     }
 
-    public int getBookingId() {
-        return bookingId;
+    public int getBookingID() {
+        return bookingID;
     }
 
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
     }
 
     public LocalDate getIssueDate() {
@@ -51,11 +58,11 @@ public class Invoice implements Serializable {
         this.issueDate = issueDate;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

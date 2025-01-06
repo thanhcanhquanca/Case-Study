@@ -2,42 +2,43 @@ package model;
 
 import java.io.Serializable;
 
-public class Customer implements Serializable {
-    private String name;
+public class Customer extends Hotel implements Serializable {
     private String id;
+    private String name;
     private int age;
     private int phoneNumber;
     private String email;
     private String address;
 
-    public Customer() {
-    }
-
-    private static Customer instance;
-
-    public static Customer getInstance(String name,String id, int age, int phoneNumber, String email, String address) {
-        if (instance == null) {
-            instance = new Customer(name,id,age,phoneNumber,email,address);
-        }
-        return instance;
-    }
-
-
-    public Customer(String name, String id, int age, int phoneNumber, String email, String address) {
-        this.name = name;
+    public Customer(String id, String name, int age, int phoneNumber, String email, String address) {
         this.id = id;
+        this.name = name;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
     }
 
-    public String getName() {
-        return name;
+    public Customer(String description, String color, String id, String name, int age, int phoneNumber, String email, String address) {
+        super(description, color);
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 
     public String getId() {
@@ -46,6 +47,14 @@ public class Customer implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {

@@ -1,33 +1,40 @@
 package model;
 
-import java.awt.*;
 import java.io.Serializable;
 
-public class Room implements Serializable {
+public class Room extends Hotel implements Serializable {
     private String roomId;
     private String type;
     private int capacity;
-    private double pricePerDay;
+    private int pricePerDay;
     private boolean isStatus;
 
-    private static Room instance;
-
-    public static Room getInstance(String roomId, String type, int capacity, double pricePerDay, boolean isStatus) {
-        if (instance == null) {
-            instance = new Room(roomId, type, capacity, pricePerDay, isStatus);
-        }
-        return instance;
-    }
-
-    public Room() {
-    }
-
-    public Room(String roomId, String type, int capacity, double pricePerDay, boolean isStatus) {
+    public Room(String roomId, String type, int capacity, int pricePerDay, boolean isStatus) {
         this.roomId = roomId;
         this.type = type;
         this.capacity = capacity;
         this.pricePerDay = pricePerDay;
         this.isStatus = isStatus;
+    }
+
+    public Room(String description, String color, String roomId, String type, int capacity, int pricePerDay, boolean isStatus) {
+        super(description, color);
+        this.roomId = roomId;
+        this.type = type;
+        this.capacity = capacity;
+        this.pricePerDay = pricePerDay;
+        this.isStatus = isStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomId='" + roomId + '\'' +
+                ", type='" + type + '\'' +
+                ", capacity=" + capacity +
+                ", pricePerDay=" + pricePerDay +
+                ", isStatus=" + isStatus +
+                '}';
     }
 
     public String getRoomId() {
@@ -54,11 +61,11 @@ public class Room implements Serializable {
         this.capacity = capacity;
     }
 
-    public double getPricePerDay() {
+    public int getPricePerDay() {
         return pricePerDay;
     }
 
-    public void setPricePerDay(double pricePerDay) {
+    public void setPricePerDay(int pricePerDay) {
         this.pricePerDay = pricePerDay;
     }
 
