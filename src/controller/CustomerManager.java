@@ -2,6 +2,7 @@ package controller;
 
 import model.Customer;
 
+import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -110,5 +111,31 @@ public class CustomerManager extends HotelManager<Customer> {
         }
     }
 
+    @Override
+    public void readFromFile(String fileName) throws IOException {
+        File file = new File("customer.txt");
 
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+
+        try {
+            fileOutputStream = new FileOutputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+            objectOutputStream.writeObject(customers);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally {
+            fileOutputStream.close();
+            fileOutputStream.close();
+        }
+    }
+
+    @Override
+    public void writeToFile(String fileName) {
+        super.writeToFile(fileName);
+    }
 }

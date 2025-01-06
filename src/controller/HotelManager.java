@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.List;
 
 public class HotelManager<T> implements GenericHotel<T> {
@@ -37,6 +38,16 @@ public class HotelManager<T> implements GenericHotel<T> {
 
     @Override
     public void displayAll(T item) {
+
+    }
+
+    @Override
+    public void readFromFile(String fileName) throws IOException {
+
+    }
+
+    @Override
+    public void writeToFile(String fileName) {
 
     }
 }

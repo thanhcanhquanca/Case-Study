@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface GenericHotel<T> {
@@ -10,4 +11,6 @@ public interface GenericHotel<T> {
     void sort();
     T searchById(String id);
     void displayAll(T item);
+    void readFromFile(String fileName) throws IOException;
+    void writeToFile(String fileName);
 }
