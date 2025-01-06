@@ -12,5 +12,5 @@ public interface GenericHotel<T> {
     T searchById(String id);
     void displayAll(T item);
     void readFromFile(String fileName) throws IOException;
-    void writeToFile(String fileName);
+    void writeToFile(String fileName) throws ClassNotFoundException, IOException;
 }

@@ -113,8 +113,7 @@ public class CustomerManager extends HotelManager<Customer> {
 
     @Override
     public void readFromFile(String fileName) throws IOException {
-        File file = new File("customer.txt");
-
+        File file = new File(fileName);
         FileOutputStream fileOutputStream = null;
         ObjectOutputStream objectOutputStream = null;
 
@@ -135,7 +134,31 @@ public class CustomerManager extends HotelManager<Customer> {
     }
 
     @Override
-    public void writeToFile(String fileName) {
-        super.writeToFile(fileName);
+    public void writeToFile(String fileName) throws ClassNotFoundException, IOException {
+        File file = new File(fileName);
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+
+        try {
+            fileInputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            objectInputStream = new ObjectInputStream(fileInputStream);
+            customers.clear();
+            List<Customer> customersList = new ArrayList<>();
+
+            customersList = (List<Customer>) objectInputStream.readObject();
+            customers.addAll(customersList);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }finally {
+            fileInputStream.close();
+            objectInputStream.close();
+        }
+
+
     }
 }

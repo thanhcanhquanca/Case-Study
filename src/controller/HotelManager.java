@@ -47,7 +47,7 @@ public class HotelManager<T> implements GenericHotel<T> {
     }
 
     @Override
-    public void writeToFile(String fileName) {
+    public void writeToFile(String fileName) throws ClassNotFoundException, IOException {
 
     }
 }
