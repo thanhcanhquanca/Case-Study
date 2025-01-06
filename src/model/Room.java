@@ -4,26 +4,26 @@ import java.io.Serializable;
 
 public class Room extends Hotel implements Serializable {
     private String roomId;
-    private String type;
+    private RoomType type;
     private int capacity;
     private int pricePerDay;
     private boolean isStatus;
 
-    public Room(String roomId, String type, int capacity, int pricePerDay, boolean isStatus) {
+    public Room(String roomId, RoomType type, int capacity, int pricePerDay, boolean isStatus) {
         this.roomId = roomId;
         this.type = type;
         this.capacity = capacity;
         this.pricePerDay = pricePerDay;
-        this.isStatus = isStatus;
+        this.isStatus = false;
     }
 
-    public Room(String description, String color, String roomId, String type, int capacity, int pricePerDay, boolean isStatus) {
+    public Room(String description, String color, String roomId, RoomType type, int capacity, int pricePerDay, boolean isStatus) {
         super(description, color);
         this.roomId = roomId;
         this.type = type;
         this.capacity = capacity;
         this.pricePerDay = pricePerDay;
-        this.isStatus = isStatus;
+        this.isStatus = false;
     }
 
     @Override
@@ -45,11 +45,11 @@ public class Room extends Hotel implements Serializable {
         this.roomId = roomId;
     }
 
-    public String getType() {
+    public RoomType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(RoomType type) {
         this.type = type;
     }
 
